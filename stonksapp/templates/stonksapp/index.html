@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stonks</title>
+</head>
+<body>
+    <form method="post">
+        <textarea name="stonk_list" >{{stonk_list}}</textarea>
+        <input type="submit">
+      {% csrf_token %}
+    </form>
+    <ul>
+{% for tick in pl_ticks %}
+        <li class="{% cycle rowvalue1 rowvalue2 %}">
+            {{tick}}
+        </li>
+{% endfor %}
+    </ul>
+</body>
+</html>
