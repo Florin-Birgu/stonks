@@ -6,7 +6,18 @@
 </head>
 <body>
     <form method="post">
-        <textarea name="stonk_list" >{{stonk_list}}</textarea>
+        <textarea name="stonk_list" >{{stonk_list}}</textarea><br>
+
+        <!-- label for="">Exchange: NYSE, NASDAQ</label><br>
+        <label for="">Cap, mln Is Less Than 5000</label><br>
+        <label for="">EPS, 5-Year Growth, % Is Greater Than 10</label><br>
+        <label for="">EPS, 5-Year Growth, % Is Less Than 40</label><br>
+        <label for="">PEG Ratio Is Less Than 2</label><br-->
+
+        <input type="checkbox" id="pe_industry" name="filters" value="pe_industry" checked>
+        <label for="pe_industry">P/E to Industry, % Is Less Than 100</label><br>
+        <input type="checkbox" id="de_industry" name="filters" value="de_industry" checked>
+        <label for="de_industry">Debt/Equity to Industry, % Is Less Than 100</label><br>
         <input type="submit">
       {% csrf_token %}
     </form>
