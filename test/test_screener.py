@@ -1,5 +1,6 @@
 import unittest
 import time
+import pandas as pd
 from peterlynchscreener.screener import Screener
 
 
@@ -35,6 +36,19 @@ class ScreenerTestCase(unittest.TestCase):
         s = Screener("PEP")
         de_to_industry = s.is_de_to_industry_met()
         self.assertEqual(de_to_industry, False)
+
+    def test_pandas_test(self):
+        ticker = "PEP"
+        #s = Screener("PEP")
+        #de_to_industry = s.is_de_to_industry_met()
+        results = pd.DataFrame(columns=['Ticker', 'b', 'pe'])
+        #results = results.set_index('Ticker', inplace=True)
+        #results.iloc[ticker] = True
+        entry = (ticker, True)
+        new_row = pd.Series({"Ticker": ticker, "b": True})
+        results.loc[0] = new_row
+        print(results)
+        self.assertEqual(results.empty, True)
 
 
 if __name__ == '__main__':

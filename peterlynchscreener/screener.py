@@ -121,3 +121,10 @@ class Screener:
             return False
 
         return de < de_industry
+
+    def get_all(self):
+
+        new_row = pd.Series({"ticker": self.ticker,
+                             "pe_to_industry": self.is_pe_to_industry_met(),
+                             "pe_to_industry": self.is_pe_to_industry_met(), })
+        return new_row

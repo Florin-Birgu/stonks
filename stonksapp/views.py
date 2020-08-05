@@ -19,24 +19,15 @@ def index(request):
         filters = request.POST.getlist('filters')
         print("filters:", filters)
 
+        results = pd.DataFrame({"ticker", "pe_to_industry", "pe_to_industry"})
+
         for tick in ticks:
             time.sleep(0.4)
             print("Screening:", tick)
             s = Screener(tick)
+            tick = s.get_all()
+            results.loc[0] = tick
 
-            if "pe_industry" in filters:
-                if not s.is_pe_to_industry_met():
-                    print("pe_industry not met")
-                    continue
-
-            if "de_industry" in filters:
-                if not s.is_de_to_industry_met():
-                    print("de_industry not met")
-                    continue
-
-            pl_ticks.append(tick)
-
-        print("pl_ticks:", pl_ticks)
-        context = {"pl_ticks": pl_ticks, "stonk_list": stonk_list}
+        context = {"results": results, "stonk_list": stonk_list}
     template = loader.get_template('stonksapp/index.html')
     return HttpResponse(template.render(context, request))
