@@ -46,7 +46,7 @@ class ScreenerTestCase(unittest.TestCase):
         #results.iloc[ticker] = True
         entry = (ticker, True)
         new_row = pd.Series({"Ticker": ticker, "b": True})
-        results.loc[0] = new_row
+        results.loc[-1] = new_row
         print(results)
         self.assertEqual(results.empty, True)
 

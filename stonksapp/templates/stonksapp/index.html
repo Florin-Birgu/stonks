@@ -22,9 +22,9 @@
       {% csrf_token %}
     </form>
     <ul>
-{% for tick in results %}
+{% for tick in results.itertuples %}
         <li class="{% cycle rowvalue1 rowvalue2 %}">
-            {{tick.ticker}}
+            {{tick}}
         </li>
 {% endfor %}
     </ul>

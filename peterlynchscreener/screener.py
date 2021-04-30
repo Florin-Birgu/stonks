@@ -124,7 +124,7 @@ class Screener:
 
     def get_all(self):
 
-        new_row = pd.Series({"ticker": self.ticker,
+        new_row = {"ticker": self.ticker,
                              "pe_to_industry": self.is_pe_to_industry_met(),
-                             "pe_to_industry": self.is_pe_to_industry_met(), })
+                             "de_to_industry": self.is_de_to_industry_met(), }
         return new_row
